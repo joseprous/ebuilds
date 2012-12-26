@@ -19,7 +19,8 @@ RDEPEND="dev-libs/libcutl
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-change-library-install-path.patch
+	epatch "${FILESDIR}"/${P}-change-library-install-path.patch \
+		"${FILESDIR}"/${P}-hardcoded-plugin-path.patch
 }
 
 src_configure() {

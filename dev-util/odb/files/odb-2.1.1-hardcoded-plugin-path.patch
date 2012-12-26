@@ -1,0 +1,25 @@
+From afe35d96e8a8ede9b2e7f9c50ed1e3a545b76f4d Mon Sep 17 00:00:00 2001
+From: Jose Prous <joseprous@gmail.com>
+Date: Wed, 26 Dec 2012 14:35:46 -0300
+Subject: [PATCH] hardcoded plugin path
+
+---
+ odb/odb.cxx |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/odb/odb.cxx b/odb/odb.cxx
+index e18feeb..278675e 100644
+--- a/odb/odb.cxx
++++ b/odb/odb.cxx
+@@ -141,7 +141,7 @@ main (int argc, char* argv[])
+     // driver.
+     //
+ #ifndef STATIC_PLUGIN
+-    path plugin (plugin_path (path (argv[0])));
++    path plugin (plugin_path (path ("/usr/lib/odb")));
+ #else
+     // Use a dummy name if the plugin is linked into the compiler.
+     //
+-- 
+1.7.8.6
+
