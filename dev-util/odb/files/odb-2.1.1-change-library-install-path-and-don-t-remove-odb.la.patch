@@ -1,0 +1,37 @@
+From 3084687cd2fd69081d8adf8a270fa248f5179f59 Mon Sep 17 00:00:00 2001
+From: Jose Prous <joseprous@gmail.com>
+Date: Thu, 27 Dec 2012 14:24:23 -0300
+Subject: [PATCH] change library install path and don't remove odb.la
+
+---
+ odb/Makefile.am |    7 +------
+ 1 files changed, 1 insertions(+), 6 deletions(-)
+
+diff --git a/odb/Makefile.am b/odb/Makefile.am
+index 6f1731e..09773b4 100644
+--- a/odb/Makefile.am
++++ b/odb/Makefile.am
+@@ -2,7 +2,7 @@
+ # copyright : Copyright (c) 2009-2012 Code Synthesis Tools CC
+ # license   : GNU GPL v3; see accompanying LICENSE file
+ 
+-plugindir = $(bindir)
++plugindir = $(libdir)
+ 
+ bin_PROGRAMS = odb
+ plugin_LTLIBRARIES = odb.la
+@@ -16,11 +16,6 @@ EXTRA_DIST = common.hxx context.hxx cxx-lexer.hxx cxx-token.hxx diagnostics.hxx
+ odb_la_SOURCES = cxx-lexer.cxx sql-token.cxx sql-lexer.cxx context.cxx common.cxx location.cxx diagnostics.cxx emitter.cxx lookup.cxx include.cxx header.cxx inline.cxx validator.cxx processor.cxx generator.cxx parser.cxx plugin.cxx pragma.cxx relational/common.cxx relational/context.cxx relational/processor.cxx relational/header.cxx relational/inline.cxx relational/source.cxx relational/model.cxx relational/schema.cxx relational/schema-source.cxx relational/validator.cxx relational/mssql/common.cxx relational/mssql/context.cxx relational/mssql/header.cxx relational/mssql/inline.cxx relational/mssql/source.cxx relational/mssql/model.cxx relational/mssql/schema.cxx relational/mysql/common.cxx relational/mysql/context.cxx relational/mysql/header.cxx relational/mysql/inline.cxx relational/mysql/source.cxx relational/mysql/model.cxx relational/mysql/schema.cxx relational/oracle/common.cxx relational/oracle/context.cxx relational/oracle/header.cxx relational/oracle/inline.cxx relational/oracle/source.cxx relational/oracle/model.cxx relational/oracle/schema.cxx relational/pgsql/common.cxx relational/pgsql/context.cxx relational/pgsql/header.cxx relational/pgsql/inline.cxx relational/pgsql/source.cxx relational/pgsql/model.cxx relational/pgsql/schema.cxx relational/sqlite/common.cxx relational/sqlite/context.cxx relational/sqlite/header.cxx relational/sqlite/inline.cxx relational/sqlite/source.cxx relational/sqlite/model.cxx relational/sqlite/schema.cxx semantics/class.cxx semantics/class-template.cxx semantics/derived.cxx semantics/elements.cxx semantics/enum.cxx semantics/fundamental.cxx semantics/namespace.cxx semantics/template.cxx semantics/union.cxx semantics/union-template.cxx semantics/unit.cxx semantics/relational/column.cxx semantics/relational/elements.cxx semantics/relational/foreign-key.cxx semantics/relational/index.cxx semantics/relational/key.cxx semantics/relational/model.cxx semantics/relational/primary-key.cxx semantics/relational/table.cxx traversal/class.cxx traversal/class-template.cxx traversal/derived.cxx traversal/elements.cxx traversal/enum.cxx traversal/template.cxx traversal/union-template.cxx option-types.cxx option-functions.cxx profile.cxx semantics/relational/name.cxx options.cxx
+ odb_la_LDFLAGS = -module -shrext .so -avoid-version
+ 
+-# Remove the .la file from the final install.
+-#
+-install-data-hook:
+-	rm -f '$(bindir)/odb.la'
+-
+ # Driver.
+ #
+ odb_SOURCES = odb.cxx option-types.cxx option-functions.cxx profile.cxx semantics/relational/name.cxx options.cxx
+-- 
+1.7.8.6
+

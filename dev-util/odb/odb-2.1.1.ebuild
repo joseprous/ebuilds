@@ -5,6 +5,7 @@
 EAPI=4
 
 inherit eutils
+inherit autotools
 
 DESCRIPTION="ODB is an open-source, cross-platform, and cross-database object-relational mapping (ORM) system for C++"
 HOMEPAGE="http://www.codesynthesis.com/products/odb/"
@@ -19,8 +20,10 @@ RDEPEND="dev-libs/libcutl
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-change-library-install-path.patch \
+	epatch "${FILESDIR}"/${P}-change-library-install-path-and-don-t-remove-odb.la.patch \
 		"${FILESDIR}"/${P}-hardcoded-plugin-path.patch
+	eaclocal
+	eautomake
 }
 
 src_configure() {
